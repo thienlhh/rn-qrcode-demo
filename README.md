@@ -5,4 +5,10 @@ React Native QRCode demo app
 - Install Node.js
 - Install `react-native-cli`
 - Clone repository and install npm packages
-- Run on android devices: `react-native run-android`
+
+## Run on android devices
+- Enable Developer options and USB debugging on real devices
+- Run: `react-native run-android`
+
+## Test
+- Run `npm test`
