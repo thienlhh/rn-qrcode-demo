@@ -103,7 +103,7 @@ export default class App extends Component {
   };
 
   onCameraLayout = e => {
-    this.checkOrientation();
+    this.landscapeMode && this.checkOrientation();
   };
 
   renderCamera = () => {
