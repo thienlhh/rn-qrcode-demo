@@ -1,24 +1,21 @@
-import React from "react";
+import React from 'react'
 
-let constants = (constants = {
-  Aspect: {},
-  BarCodeType: {},
-  Type: {},
-  CaptureMode: {},
-  CaptureTarget: {},
-  CaptureQuality: {},
-  Orientation: {},
-  FlashMode: {},
-  TorchMode: {}
-});
 
-class Camera extends React.Component {
-  static constants = constants;
+export class RNCamera extends React.Component {
+  static Constants = {
+    Aspect: {},
+    BarCodeType: {},
+    Type: { back: 'back', front: 'front' },
+    CaptureMode: {},
+    CaptureTarget: {},
+    CaptureQuality: {},
+    Orientation: {},
+    FlashMode: {},
+    TorchMode: {},
+  }
   render() {
-    return null;
+    return null
   }
 }
 
-Camera.constants = constants;
-
-export default Camera;
+export default RNCamera
