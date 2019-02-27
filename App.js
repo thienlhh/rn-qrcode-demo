@@ -29,6 +29,8 @@ export default class App extends Component {
       data: null,
       image: null
     };
+
+    this.landscapeMode = false;
   }
 
   componentDidMount() {
@@ -91,6 +93,7 @@ export default class App extends Component {
   checkOrientation = () => {
     const { width, height } = Dimensions.get("window");
     const landscapeMode = width > height;
+    this.landscapeMode = landscapeMode;
 
     if (!landscapeMode) {
       Alert.alert(
