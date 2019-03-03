@@ -31,6 +31,7 @@ export default class App extends Component {
     };
 
     this.landscapeMode = false;
+    this.alertPresent = false;
   }
 
   componentDidMount() {
@@ -92,20 +93,28 @@ export default class App extends Component {
   // If not then disable camera functions
   checkOrientation = () => {
     const { width, height } = Dimensions.get("window");
-    const landscapeMode = width > height;
-    this.landscapeMode = landscapeMode;
+    this.landscapeMode = width > height;
 
-    if (!landscapeMode) {
+    if (!this.landscapeMode && !this.alertPresent) {
+      this.alertPresent = true;
+
       Alert.alert(
         "Landscape mode required",
-        "Please turn your phone into landscape mode"
+        "Please turn your phone into landscape mode",
+        [
+          {
+            text: "OK",
+            onPress: () => {
+              this.alertPresent = false;
+            }
+          }
+        ]
       );
     }
   };
 
   onCameraLayout = e => {
-    const status = this.camera.getStatus();
-    status === "READY" && this.checkOrientation();
+    this.checkOrientation();
   };
 
   renderCamera = () => {
@@ -126,6 +135,7 @@ export default class App extends Component {
           {({ camera, status, recordAudioPermissionStatus }) => {
             if (status !== "READY") return <View />;
 
+            this.alertPresent = false;
             this.checkOrientation();
 
             return (
